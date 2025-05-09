@@ -1,0 +1,46 @@
+[[docker-setup]]
+= Docker Configuration
+
+== Dockerfile
+
+[source,dockerfile]
+----
+FROM eclipse-temurin:17-jre-jammy
+
+WORKDIR /app
+COPY target/*.jar app.jar
+
+ENV SPRING_AI_MONGODB_API_KEY=""
+ENV SPRING_DATA_MONGODB_URI=""
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+----
+
+== Docker Compose
+
+[source,yaml]
+----
+version: '3.8'
+services:
+  chat-query-service:
+    build: .
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATA_MONGODB_URI=${MONGODB_URI}
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+----
+
+== Environment Setup
+
+[source,shell]
+----
+export SPRING_AI_MONGODB_API_KEY=<INSERT KEY HERE>
+export SPRING_DATA_MONGODB_URI=<INSERT MONGODB URI>
+----

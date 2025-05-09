@@ -1,0 +1,31 @@
+<header class="header">
+  <div class="header-content">
+    <div class="logo">
+      <mat-icon>chat</mat-icon>
+      <h1>MongoDB Chat</h1>
+    </div>
+    
+    <nav class="nav">
+      <a routerLink="/chat" routerLinkActive="active">Chat</a>
+      <a routerLink="/about" routerLinkActive="active">About</a>
+    </nav>
+    
+    <div class="header-actions">
+      <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
+        <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+      
+      <ng-container *ngIf="authService.isAuthenticated()">
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+    </div>
+  </div>
+</header> 

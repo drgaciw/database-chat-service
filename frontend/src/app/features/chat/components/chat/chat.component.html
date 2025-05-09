@@ -1,0 +1,67 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h1>MongoDB Chat</h1>
+    <div class="search-container">
+      <form [formGroup]="searchForm" class="search-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Search messages</mat-label>
+          <input matInput formControlName="query" placeholder="Type to search...">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div class="messages-container" #messagesContainer>
+    <!-- Main Messages -->
+    <div>
+      <div *ngIf="(messages$ | async)?.length === 0 && !(loading$ | async)" class="empty-state">
+        <mat-icon>chat</mat-icon>
+        <p>Start a conversation</p>
+      </div>
+
+      <div *ngFor="let message of (messages$ | async)" class="message" [ngClass]="{'user': message.role === 'user'}">
+        <div class="message-avatar">
+          <mat-icon>{{ message.role === 'user' ? 'person' : 'smart_toy' }}</mat-icon>
+        </div>
+        <div class="message-content">
+          <div class="message-text">{{ message.content }}</div>
+          <div class="message-actions">
+            <button mat-icon-button (click)="showMessageHistory(message)">
+              <mat-icon>history</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="(loading$ | async)" class="loading-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div *ngIf="(hasMore$ | async) && !(loading$ | async)" class="load-more">
+        <button mat-button (click)="loadMoreMessages()">Load more messages</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="(error$ | async)" class="error-message">
+    <mat-icon>error</mat-icon>
+    <span>{{ error$ | async }}</span>
+  </div>
+
+  <div class="message-input-container">
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+      <mat-form-field appearance="outline">
+        <mat-label>Type your message</mat-label>
+        <textarea matInput formControlName="message" placeholder="Type your message..."
+                  (keydown)="onEnter($event)"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="messageForm.invalid || (loading$ | async)">
+        <mat-icon>send</mat-icon>
+      </button>
+    </form>
+  </div>
+</div>

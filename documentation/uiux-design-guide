@@ -1,0 +1,165 @@
+# MongoDB Chatbot Framework - UI/UX Design Guide
+
+## Overview
+
+This document outlines the UI/UX design for the MongoDB Chatbot Framework, built in Angular, mirroring the aesthetic and functionality of the Claude AI landing page (Anthropic), with a strong emphasis on chat components. The interface supports two user types—business power users and database administrators—enabling natural language and structured queries to interact with a MongoDB database. The design prioritizes a sleek, distraction-free chat experience while ensuring usability, accessibility, and integration with Angular’s capabilities.
+
+## Design Principles (Inspired by Claude AI)
+
+* **Simplicity:**
+    * Create a clean, uncluttered interface with a focus on the chat area.
+    * Minimize visual noise to emphasize user-bot interactions.
+    * Use subtle visual hierarchy to guide attention to key elements.
+* **Engagement:**
+    * Design a welcoming chat interface that invites interaction.
+    * Provide immediate, clear feedback on user inputs.
+    * Highlight the conversational flow with smooth transitions.
+* **Functionality:**
+    * Ensure quick access to chat features with minimal steps.
+    * Support diverse query types (natural language, structured) seamlessly.
+    * Optimize for real-time responses and intuitive navigation.
+* **Accessibility:**
+    * Adhere to WCAG 2.1 AA standards for inclusivity.
+    * Support keyboard navigation and screen readers.
+    * Maintain high contrast and legible typography.
+
+## Design System (Adapted from Claude AI)
+
+### Typography
+
+* **Font Family:**
+    * Primary: Inter (used on Claude’s page for its clean, modern look).
+    * Monospace: JetBrains Mono (for structured queries or code).
+* **Font Sizes:**
+    * Chat Header: 24px (2rem).
+    * Message Text: 16px (1.33rem).
+    * Input Placeholder: 14px (1.167rem).
+    * Small Text (e.g., timestamps): 12px (1rem).
+* **Font Weights:**
+    * Regular: 400.
+    * Medium: 500 (for emphasis).
+    * Bold: 700 (for headers).
+* **Line Heights:**
+    * Chat Messages: 1.5.
+    * Input: 1.4.
+
+### Color Palette (Mirroring Claude’s Minimalist Style)
+
+* **Primary Colors:**
+    * Chat Accent: `#FF6F61` (Claude’s coral, used sparingly for highlights).
+    * Background: `#FFFFFF` (clean white base).
+    * Chat Surface: `#F8F8F8` (light gray for chat area).
+* **Neutral Colors:**
+    * Text Primary: `#1A1A1A` (near-black for readability).
+    * Text Secondary: `#666666` (muted gray for timestamps).
+    * Border: `#E0E0E0` (subtle separation).
+* **Semantic Colors:**
+    * Success: `#34C759` (green for confirmations).
+    * Error: `#FF3B30` (red for errors).
+    * Info: `#007AFF` (blue for system messages).
+
+### Spacing System
+
+* Base Unit: 8px grid (consistent with Claude’s balanced spacing).
+    * xs: 4px (0.25rem).
+    * sm: 8px (0.5rem).
+    * md: 16px (1rem).
+    * lg: 24px (1.5rem).
+    * xl: 32px (2rem).
+
+## Chat Interface Design (Core Focus)
+
+### Layout (Mirroring Claude AI)
+
+* **Structure:**
+    * Full-width chat container centered on the page, occupying ~80% of viewport width (max-width: 1200px).
+    * Fixed input area at the bottom, with conversation history above.
+    * Minimal header with branding (e.g., “MongoDB Chatbot”) and a settings icon.
+* **Visual Cue:** Subtle shadow under the chat container (`0 4px 12px rgba(0, 0, 0, 0.05)`) to lift it from the background, similar to Claude’s depth.
+
+### Message Bubbles
+
+* **User Message:**
+    * Background: `#FF6F61` (coral, aligning with Claude’s accent).
+    * Text: `#FFFFFF`.
+    * Border Radius: 12px 12px 0 12px.
+    * Padding: 10px 14px.
+    * Alignment: Right.
+    * Max Width: 70% of chat container.
+* **Bot Message:**
+    * Background: `#F8F8F8` (light gray, matching Claude’s neutral tone).
+    * Text: `#1A1A1A`.
+    * Border Radius: 12px 12px 12px 0.
+    * Padding: 10px 14px.
+    * Alignment: Left.
+    * Max Width: 70% of chat container.
+* **System Message:**
+    * Background: `#E0E0E0`.
+    * Text: `#666666`.
+    * Border Radius: 12px.
+    * Padding: 8px 12px.
+    * Alignment: Center.
+    * Max Width: 80% of chat container.
+
+### Input Area
+
+* **Message Input:**
+    * Background: `#FFFFFF`.
+    * Border: 1px solid `#E0E0E0`.
+    * Border Radius: 24px (pill-shaped, like Claude’s input).
+    * Padding: 12px 16px.
+    * Min Height: 48px.
+    * Max Height: 100px (expands with typing).
+    * Placeholder: “Ask about your MongoDB data…” (mirroring Claude’s inviting tone).
+    * Focus: Border changes to `#FF6F61` with a subtle glow (`box-shadow: 0 0 4px rgba(255, 111, 97, 0.3)`).
+* **Send Button:**
+    * Icon: Arrow (right-pointing, simple SVG).
+    * Background: `#FF6F61`.
+    * Border Radius: 50%.
+    * Size: 36px x 36px.
+    * Position: Inside input (right-aligned).
+    * Hover: Lighten to `#FF8A80`.
+    * Disabled: `#E0E0E0` when input is empty.
+
+### Conversation History
+
+* **Display:**
+    * Scrolls vertically within the chat container, with smooth scrolling behavior.
+    * Fades at the top (linear gradient) to indicate more history, similar to Claude’s clean aesthetic.
+* **Timestamps:**
+    * Small text (12px, `#666666`) below each message, right-aligned for user messages, left-aligned for bot messages.
+* **Loading State:**
+    * Three pulsing dots (gray, 8px diameter) in a bot message bubble during response generation, mirroring Claude’s subtle feedback.
+
+### Role Toggle (Business User vs. Admin)
+
+* **Component:**
+    * Dropdown or toggle button in the header (e.g., “Business” / “Admin”).
+    * Background: `#F8F8F8`.
+    * Border: 1px solid `#E0E0E0`.
+    * Border Radius: 8px.
+    * Padding: 6px 12px.
+* **Behavior:** Switches context for query interpretation and response formatting (e.g., charts for business users, schema data for admins).
+
+### Visualization Panel (Business Users)
+
+* **Container:**
+    * Appears below bot messages when charts are generated.
+    * Background: `#FFFFFF`.
+    * Border: 1px solid `#E0E0E0`.
+    * Border Radius: 8px.
+    * Padding: 16px.
+    * Max Width: 100% of chat container.
+* **Charts:**
+    * Simple bar/line/pie charts (using Angular-compatible library like Chart.js).
+    * Colors: `#FF6F61` (primary), `#007AFF` (secondary), `#34C759` (tertiary).
+
+### Technical Details Panel (Admins)
+
+* **Container:**
+    * Appears below bot messages for schema/performance data.
+    * Background: `#F8F8F8`.
+    * Border: 1px solid `#E0E0E0`.
+    * Border Radius: 8px.
+    * Padding: 16px.
+    * Max Width: 100% of chat container.

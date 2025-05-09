@@ -1,0 +1,66 @@
+[[chat-endpoints]]
+= Chat Query Endpoints
+
+The MongoDB Chat Query service provides REST and WebSocket endpoints for natural language query processing.
+
+== Configuration
+
+[source,yaml]
+----
+spring:
+  ai:
+    mongodb:
+      chat:
+        enabled: true
+        base-url: ${MONGODB_CHAT_URL:http://localhost:8080}
+----
+
+== REST Endpoints
+
+=== Query Processing
+
+[source,http]
+----
+POST /api/v1/chat/query
+Content-Type: application/json
+
+{
+  "query": "Find all orders from last week",
+  "role": "business_analyst"
+}
+----
+
+=== Response Format
+
+[source,json]
+----
+{
+  "result": {
+    "data": [],
+    "metadata": {
+      "executionTime": 150,
+      "queryType": "aggregation"
+    }
+  }
+}
+----
+
+== WebSocket Integration
+
+=== Connection
+
+[source,java]
+----
+@Configuration
+public class WebSocketConfig implements WebSocketConfigurer {
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(chatQueryHandler(), "/ws/chat")
+               .setAllowedOrigins("*");
+    }
+}
+----
+
+== Security
+
+Refer to the xref:security-setup.adoc[Security Setup] guide for authentication configuration.

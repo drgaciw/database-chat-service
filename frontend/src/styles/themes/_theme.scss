@@ -1,0 +1,50 @@
+@import '../abstracts/_variables';
+
+// Theme variables
+:root {
+  // Light theme (default)
+  --primary-color: #{$primary-color};
+  --primary-light-color: #{$primary-light-color};
+  --primary-dark-color: #{$primary-dark-color};
+  --secondary-color: #{$secondary-color};
+  --secondary-light-color: #{$secondary-light-color};
+  --secondary-dark-color: #{$secondary-dark-color};
+
+  --background-color: #{$gray-100};
+  --card-bg-color: #{$gray-50};
+  --text-color: #{$gray-900};
+  --secondary-text-color: #{$gray-700};
+  --border-color: #{$gray-300};
+  --input-bg-color: white;
+
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --error-color: #{$error-color};
+  --info-color: #{$info-color};
+
+  --error-bg-color: #ffebee;
+}
+
+// Dark theme
+.dark-theme {
+  --primary-color: #{$primary-light-color};
+  --primary-light-color: #{$primary-color};
+  --primary-dark-color: #{$primary-dark-color};
+  --secondary-color: #{$secondary-light-color};
+  --secondary-light-color: #{$secondary-color};
+  --secondary-dark-color: #{$secondary-dark-color};
+
+  --background-color: #{$gray-900};
+  --card-bg-color: #{$gray-800};
+  --text-color: #{$gray-100};
+  --secondary-text-color: #{$gray-400};
+  --border-color: #{$gray-700};
+  --input-bg-color: #{$gray-800};
+
+  --success-color: #81c784;
+  --warning-color: #ffb74d;
+  --error-color: #e57373;
+  --info-color: #64b5f6;
+
+  --error-bg-color: #5f2120;
+}

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mongodb-test:
+    image: mongo:latest
+    container_name: mongodb-test
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_test_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    networks:
+      - test-network
+
+  backend-test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.test
+    container_name: backend-test
+    depends_on:
+      - mongodb-test
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://admin:password@mongodb-test:27017/product_chat_test_db?authSource=admin
+      - SPRING_PROFILES_ACTIVE=test
+    networks:
+      - test-network
+
+  frontend-test:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.test
+    container_name: frontend-test
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend-test
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  mongodb_test_data:

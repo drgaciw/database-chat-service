@@ -1,0 +1,13 @@
+/*
+ * Main JAPE grammar for MongoDB query processing
+ */
+
+MultiPhase: MongoDBQueryProcessing
+
+Phases:
+// First identify the query intent
+intent.jape
+// Then identify collections and fields
+entities.jape
+// Finally build the MongoDB query
+query.jape

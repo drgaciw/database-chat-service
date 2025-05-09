@@ -1,0 +1,8 @@
+FROM maven:latest
+
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+
+# Skip tests and disable Spring Cloud compatibility check
+CMD ["mvn", "spring-boot:run", "-B", "-e", "-Dspring.profiles.active=test", "-Deureka.client.enabled=false", "-Dspring.cloud.config.enabled=false", "-DskipTests", "-Dspring.cloud.compatibility-verifier.enabled=false"]

@@ -1,0 +1,28 @@
+services:
+  mongodb:
+    image: 'mongo:latest'
+    environment:
+      - 'MONGO_INITDB_DATABASE=mydatabase'
+      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+
+  mongodb-mcp-server:
+    image: 'tzolov/mcp-everything-server:v1'
+    ports:
+      - '3003:3001'
+    command: ['node', 'dist/sse.js']
+    environment:
+      - 'NODE_VERSION=23.4.0'
+      - 'YARN_VERSION=1.22.22'
+      - 'MONGODB_URI=mongodb://root:secret@mongodb:27017/mydatabase'
+    volumes:
+      - './:/workspace'
+    depends_on:
+      - mongodb

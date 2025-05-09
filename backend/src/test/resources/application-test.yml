@@ -1,0 +1,30 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://admin:password@localhost:27018/product_chat_test_db?authSource=admin
+  ai:
+    openai:
+      enabled: false
+    azure:
+      openai:
+        enabled: false
+    anthropic:
+      enabled: false
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: test
+            client-secret: test
+          google:
+            client-id: test
+            client-secret: test
+  cache:
+    type: simple
+
+logging:
+  level:
+    root: INFO
+    com.aciworldwide: DEBUG
+    org.springframework: INFO 

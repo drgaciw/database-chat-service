@@ -1,0 +1,83 @@
+# MongoDB Chat Query Microservice - Project Artifacts
+
+This document provides a comprehensive list of all project artifacts for the MongoDB Chat Query Microservice built with Java/Spring Boot.
+
+## Requirements and Specifications
+
+| Artifact | Description |
+|----------|-------------|
+| [Product Requirements Document](./product-requirements-document.md) | Defines core system requirements, user types, and functional/non-functional requirements for the MongoDB Chat Query Microservice |
+| [API Specification Document](./api-specification-document.md) | Detailed REST API endpoint specifications, request/response formats, and authentication requirements |
+| [Backend Technical Specification](./backend-technical-spec.md) | Detailed specification for Java/Spring Boot implementation, including architecture, components, and data models |
+| [Natural Language Processing Design](./nlp-design-document.md) | Technical design for the NLP system that translates natural language queries to MongoDB queries |
+| [User Interface Design Document](./ui-design-document.md) | Optional web UI design specifications for query input and result display |
+
+## Architecture and Design
+
+| Artifact | Description |
+|----------|-------------|
+| [System Architecture Document](./system-architecture-document.md) | High-level architecture of the microservice, including components, interfaces, and data flows |
+| [Database Schema Design](./database-schema-design.md) | MongoDB schema design, collections, indexes, and relationships |
+| [Query Translation Framework](./query-translation-framework.md) | Design of the framework that translates natural language to MongoDB queries |
+| [Authentication and Authorization Design](./auth-design-document.md) | Design for role-based access control and integration with authentication systems |
+| [Component Design Document](./component-design-document.md) | Detailed design of individual system components and their interactions |
+
+## Implementation Guidelines
+
+| Artifact | Description |
+|----------|-------------|
+| [Java/Spring Boot Implementation Guide](./java-spring-implementation-guide.md) | Guidelines for implementing the microservice using Java and Spring Boot |
+| [Spring Data MongoDB Integration Guide](./spring-data-mongodb-guide.md) | Best practices for integrating with MongoDB using Spring Data |
+| [Code Generation Guidelines](./code-generation-guidelines.md) | Guidelines for using Cursor, Windsurf, or Roo Code for code generation |
+| [Security Implementation Guide](./security-implementation-guide.md) | Security requirements and implementation guidelines for data protection and access control |
+| [Error Handling Strategy](./error-handling-strategy.md) | Approach for handling and communicating errors in the system |
+
+## Development Resources
+
+| Artifact | Description |
+|----------|-------------|
+| [Development Environment Setup](./development-environment-setup.md) | Instructions for setting up the development environment |
+| [Coding Standards](./coding-standards.md) | Java and Spring Boot coding standards and best practices |
+| [API Documentation](./api-documentation.md) | API documentation using OpenAPI/Swagger |
+| [Environment Variables](./environment-variables.md) | Documentation of environment variables for different environments |
+| [Dependency Management](./dependency-management.md) | Guidelines for managing project dependencies |
+
+## Deployment and Operations
+
+| Artifact | Description |
+|----------|-------------|
+| [Deployment Strategy](./deployment-strategy.md) | Strategy for deploying the microservice to different environments |
+| [Containerization Guide](./containerization-guide.md) | Docker containerization strategy for development and production |
+| [MongoDB Configuration Guide](./mongodb-configuration-guide.md) | Configuration guidelines for MongoDB in different environments |
+| [Monitoring and Logging Setup](./monitoring-logging-setup.md) | Setup for monitoring and logging in the microservice |
+| [Scaling Strategy](./scaling-strategy.md) | Approach for scaling the microservice to handle increased load |
+
+## Testing and Quality Assurance
+
+| Artifact | Description |
+|----------|-------------|
+| [Testing Strategy](./testing-strategy.md) | Comprehensive testing strategy including unit, integration, and acceptance testing |
+| [Test Data Management](./test-data-management.md) | Approach for managing test data for different test scenarios |
+| [Performance Testing Plan](./performance-testing-plan.md) | Plan for testing performance requirements (2-second response time, 100+ concurrent users) |
+| [Testcontainers Setup Guide](./testcontainers-setup-guide.md) | Guide for setting up Testcontainers for MongoDB testing |
+| [Quality Assurance Checklist](./qa-checklist.md) | Checklist for ensuring quality in the microservice |
+
+## Sample Implementations
+
+| Artifact | Description |
+|----------|-------------|
+| [Sample Query Controller](./sample-query-controller.java) | Example implementation of the query controller |
+| [Sample Query Service](./sample-query-service.java) | Example implementation of the query service |
+| [Sample NLP Processor](./sample-nlp-processor.java) | Example implementation of the natural language processor |
+| [Sample MongoDB Repository](./sample-mongodb-repository.java) | Example implementation of a MongoDB repository |
+| [Sample Web UI Component](./sample-web-ui-component.html) | Example implementation of the optional web UI |
+
+## User Documentation
+
+| Artifact | Description |
+|----------|-------------|
+| [Business User Guide](./business-user-guide.md) | Guide for business users on how to formulate effective queries |
+| [Database Administrator Guide](./dba-guide.md) | Guide for database administrators on technical queries |
+| [Query Examples](./query-examples.md) | Examples of natural language and structured queries with expected results |
+| [Troubleshooting Guide](./troubleshooting-guide.md) | Common issues and their solutions |
+| [README](./README.md) | Overview of the documentation directory and project approach |

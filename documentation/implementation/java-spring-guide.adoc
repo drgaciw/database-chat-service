@@ -1,0 +1,66 @@
+[[java-spring-implementation]]
+= Java/Spring Boot Implementation Guide
+
+This guide covers the implementation of the MongoDB Chat Query service using Spring Boot.
+
+== Dependencies
+
+[source,xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-core</artifactId>
+    </dependency>
+</dependencies>
+----
+
+== Query Processing Implementation
+
+[source,java]
+----
+@Service
+public class ChatQueryService {
+    private final MongoTemplate mongoTemplate;
+    private final ChatClient chatClient;
+
+    @Tool(description = "Process natural language queries")
+    public QueryResult processQuery(String query, ToolContext context) {
+        String tenantId = context.get("tenantId");
+        // Implementation
+    }
+}
+----
+
+== Testing
+
+=== Integration Tests
+
+[source,java]
+----
+@SpringBootTest
+class ChatQueryServiceIntegrationTest {
+    @Autowired
+    private ChatQueryService queryService;
+
+    @Test
+    void testQueryProcessing() {
+        ToolContext context = ToolContext.builder()
+            .put("tenantId", "test-tenant")
+            .build();
+        
+        QueryResult result = queryService.processQuery(
+            "Show active users", context);
+        
+        assertNotNull(result);
+    }
+}
+----

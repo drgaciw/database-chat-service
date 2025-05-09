@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+COPY . .
+
+# Create missing directory for styles
+RUN mkdir -p src/styles/abstracts
+RUN touch src/styles/abstracts/mixins.scss
+
+# Create a custom environment file for Docker
+RUN cp src/environments/environment.docker.ts src/environments/environment.ts
+
+# Expose port 4200 (Angular default)
+EXPOSE 4200
+
+# Start the development server with reduced strictness
+CMD ["npm", "run", "start", "--", "--configuration=development", "--host=0.0.0.0", "--disable-host-check", "--poll=2000"]

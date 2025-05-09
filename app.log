@@ -1,0 +1,526 @@
+[0.033s][warning][cds] A jar file is not the one used while building the shared archive file: C:\Users\Username01\AppData\Roaming\Cursor\User\globalStorage\pleiades.java-extension-pack-jdk\java\21\lib\modules
+[0.034s][warning][cds] A jar file is not the one used while building the shared archive file: C:\Users\Username01\AppData\Roaming\Cursor\User\globalStorage\pleiades.java-extension-pack-jdk\java\21\lib\modules
+[0.034s][warning][cds] C:\Users\Username01\AppData\Roaming\Cursor\User\globalStorage\pleiades.java-extension-pack-jdk\java\21\lib\modules timestamp has changed.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< com.aciworldwide:database-chat-service >---------------
+[INFO] Building database-chat-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ database-chat-service ---
+[INFO] Deleting C:\Users\Username01\IdeaProjects\database-chat-service\target
+[INFO] 
+[INFO] >>> spring-boot:3.4.4:run (default-cli) > test-compile @ database-chat-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ database-chat-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ database-chat-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 40 source files with javac [debug parameters release 21] to target\classes
+[INFO] Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[18,44] interface expected here
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[38,26] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[39,26] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[40,26] cannot find symbol
+  symbol:   method setRoles(java.util.Set<com.aciworldwide.database_chat_service.model.UserRole>)
+  location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[48,29] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[49,29] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[50,29] cannot find symbol
+  symbol:   method setRoles(java.util.Set<com.aciworldwide.database_chat_service.model.UserRole>)
+  location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[37,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[40,24] cannot find symbol
+  symbol:   method getTimestamp()
+  location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[41,24] cannot find symbol
+  symbol:   method setTimestamp(java.time.LocalDateTime)
+  location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[45,24] cannot find symbol
+  symbol:   method getStatus()
+  location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[46,24] cannot find symbol
+  symbol:   method setStatus(com.aciworldwide.database_chat_service.model.ChatMessage.MessageStatus)
+  location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[56,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[66,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[76,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/ProductService.java:[138,81] incompatible types: double cannot be converted to java.math.BigDecimal
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[98,33] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[118,29] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[238,33] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[247,33] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[302,21] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[303,21] cannot find symbol
+  symbol:   method setQuery(java.lang.String)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[304,21] cannot find symbol
+  symbol:   method setQueryType(com.aciworldwide.database_chat_service.model.QueryType)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[305,21] cannot find symbol
+  symbol:   method setExecutedQuery(java.lang.String)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[306,21] cannot find symbol
+  symbol:   method setTimestamp(java.time.Instant)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[307,21] cannot find symbol
+  symbol:   method setStatus(success ? [...]rror")
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[308,21] cannot find symbol
+  symbol:   method setErrorMessage(java.lang.String)
+  location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[447,40] cannot find symbol
+  symbol:   method getId()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[448,43] cannot find symbol
+  symbol:   method getQuery()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[449,47] cannot find symbol
+  symbol:   method getQueryType()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[450,51] cannot find symbol
+  symbol:   method getExecutedQuery()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[451,47] cannot find symbol
+  symbol:   method getTimestamp()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[452,44] cannot find symbol
+  symbol:   method getStatus()
+  location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[506,44] cannot find symbol
+  symbol:   method getId()
+  location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[507,46] cannot find symbol
+  symbol:   method getName()
+  location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[508,53] cannot find symbol
+  symbol:   method getDescription()
+  location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[509,47] cannot find symbol
+  symbol:   method getQuery()
+  location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[510,51] cannot find symbol
+  symbol:   method getQueryType()
+  location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[40,31] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[41,31] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[42,34] cannot find symbol
+  symbol:   method getRoles()
+  location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[49,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[59,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[71,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[83,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[111,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[123,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[143,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[153,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[165,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[183,43] invalid method reference
+  cannot find symbol
+    symbol:   method getId()
+    location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[188,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[199,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[218,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[236,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[242,13] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[250,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[262,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[263,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[270,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[271,37] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[278,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[284,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[290,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[299,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[305,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[306,27] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[314,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[315,37] cannot find symbol
+  symbol:   method builder()
+  location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[323,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[329,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[335,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[341,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[347,9] cannot find symbol
+  symbol:   variable log
+  location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[27,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[33,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[40,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[45,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[50,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[55,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[60,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[65,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[70,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[75,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[80,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[85,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[94,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[100,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[109,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[118,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[123,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[128,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[133,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[138,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[143,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[148,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[153,5] method does not override or implement a method from a supertype
+[INFO] 97 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.379 s
+[INFO] Finished at: 2025-04-15T10:21:57-05:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project database-chat-service: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[18,44] interface expected here
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[38,26] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[39,26] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[40,26] cannot find symbol
+[ERROR]   symbol:   method setRoles(java.util.Set<com.aciworldwide.database_chat_service.model.UserRole>)
+[ERROR]   location: variable adminUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[48,29] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[49,29] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/config/DataInitializer.java:[50,29] cannot find symbol
+[ERROR]   symbol:   method setRoles(java.util.Set<com.aciworldwide.database_chat_service.model.UserRole>)
+[ERROR]   location: variable businessUser of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[37,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[40,24] cannot find symbol
+[ERROR]   symbol:   method getTimestamp()
+[ERROR]   location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[41,24] cannot find symbol
+[ERROR]   symbol:   method setTimestamp(java.time.LocalDateTime)
+[ERROR]   location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[45,24] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[46,24] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.aciworldwide.database_chat_service.model.ChatMessage.MessageStatus)
+[ERROR]   location: variable chatMessage of type com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[56,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[66,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/controller/ChatController.java:[76,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.controller.ChatController
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/ProductService.java:[138,81] incompatible types: double cannot be converted to java.math.BigDecimal
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[98,33] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[118,29] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[238,33] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[247,33] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.QueryResponse
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[302,21] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[303,21] cannot find symbol
+[ERROR]   symbol:   method setQuery(java.lang.String)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[304,21] cannot find symbol
+[ERROR]   symbol:   method setQueryType(com.aciworldwide.database_chat_service.model.QueryType)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[305,21] cannot find symbol
+[ERROR]   symbol:   method setExecutedQuery(java.lang.String)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[306,21] cannot find symbol
+[ERROR]   symbol:   method setTimestamp(java.time.Instant)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[307,21] cannot find symbol
+[ERROR]   symbol:   method setStatus(success ? [...]rror")
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[308,21] cannot find symbol
+[ERROR]   symbol:   method setErrorMessage(java.lang.String)
+[ERROR]   location: variable historyEntry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[447,40] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[448,43] cannot find symbol
+[ERROR]   symbol:   method getQuery()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[449,47] cannot find symbol
+[ERROR]   symbol:   method getQueryType()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[450,51] cannot find symbol
+[ERROR]   symbol:   method getExecutedQuery()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[451,47] cannot find symbol
+[ERROR]   symbol:   method getTimestamp()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[452,44] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable entry of type com.aciworldwide.database_chat_service.model.QueryHistory
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[506,44] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[507,46] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[508,53] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[509,47] cannot find symbol
+[ERROR]   symbol:   method getQuery()
+[ERROR]   location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/QueryService.java:[510,51] cannot find symbol
+[ERROR]   symbol:   method getQueryType()
+[ERROR]   location: variable template of type com.aciworldwide.database_chat_service.model.QueryTemplate
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[40,31] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[41,31] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/security/CustomUserDetailsService.java:[42,34] cannot find symbol
+[ERROR]   symbol:   method getRoles()
+[ERROR]   location: variable user of type com.aciworldwide.database_chat_service.model.User
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[49,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[59,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[71,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[83,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[111,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[123,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[143,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[153,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[165,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[183,43] invalid method reference
+[ERROR]   cannot find symbol
+[ERROR]     symbol:   method getId()
+[ERROR]     location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[188,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[199,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[218,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[236,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[242,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[250,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[262,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[263,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[270,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[271,37] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[278,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[284,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[290,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[299,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[305,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[306,27] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[314,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[315,37] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.aciworldwide.database_chat_service.model.ChatMessage
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[323,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[329,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[335,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[341,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/McpChatServiceImpl.java:[347,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.aciworldwide.database_chat_service.service.impl.McpChatServiceImpl
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[27,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[33,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[40,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[45,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[50,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[55,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[60,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[65,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[70,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[75,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[80,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[85,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[94,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[100,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[109,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[118,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[123,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[128,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[133,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[138,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[143,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[148,5] method does not override or implement a method from a supertype
+[ERROR] /C:/Users/Username01/IdeaProjects/database-chat-service/src/main/java/com/aciworldwide/database_chat_service/service/impl/ProductServiceImpl.java:[153,5] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
