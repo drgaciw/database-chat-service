@@ -1,25 +1,33 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiService {
 
-  constructor() { }
+  private readonly apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${environment.googleApiKey}`;
 
-  // TODO: Initialize Genkit with plugin architecture
+  constructor(private http: HttpClient) { }
 
-  // TODO: Set up configuration management system
+  generateContent(prompt: string): Observable<string> {
+    const body = {
+      contents: [
+        {
+          parts: [
+            {
+              text: prompt
+            }
+          ]
+        }
+      ]
+    };
 
-  // TODO: Define core flow interfaces
-
-  // TODO: Implement environment variable handling for API keys
-
-  // TODO: Create model provider configuration system
-
-  // TODO: Implement chat processing flow
-
-  // TODO: Implement streaming response flow
-
-  // TODO: Implement error handling flow
+    return this.http.post<any>(this.apiUrl, body).pipe(
+      map(response => response.candidates[0].content.parts[0].text)
+    );
+  }
 }

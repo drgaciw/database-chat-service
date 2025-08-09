@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
+import { AiService } from 'src/app/core/services/ai.service';
 import { ChatState, Message } from '../../models/message.model';
 import { ChatService } from '../../services/chat.service';
 import * as ChatActions from '../../store/chat.actions';
@@ -39,7 +40,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<{ chat: ChatState }>,
     private chatService: ChatService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private aiService: AiService
   ) {
     this.messageForm = this.fb.group({
       message: ['', [Validators.required, Validators.minLength(1)]]
@@ -167,10 +169,33 @@ export class ChatComponent implements OnInit, OnDestroy {
   sendMessage(): void {
     if (this.messageForm.invalid) return;
 
-    const message = this.messageForm.get('message')?.value;
+    const messageContent = this.messageForm.get('message')?.value;
     this.messageForm.reset();
 
-    this.store.dispatch(ChatActions.sendMessage({ content: message }));
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: messageContent,
+      timestamp: new Date()
+    };
+
+    this.store.dispatch(ChatActions.sendMessageSuccess({ message: userMessage }));
+    this.store.dispatch(ChatActions.sendMessage({ content: messageContent }));
+
+    this.aiService.generateContent(messageContent).subscribe({
+      next: (aiResponse) => {
+        const aiMessage: Message = {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: aiResponse,
+          timestamp: new Date()
+        };
+        this.store.dispatch(ChatActions.sendMessageSuccess({ message: aiMessage }));
+      },
+      error: (error) => {
+        this.store.dispatch(ChatActions.sendMessageFailure({ error: 'Failed to get response from AI' }));
+      }
+    });
   }
 
   onEnter(event: KeyboardEvent): void {
