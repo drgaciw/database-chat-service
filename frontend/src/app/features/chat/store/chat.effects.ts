@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
+import { AiService } from 'src/app/core/services/ai.service';
 import { ChatService } from '../services/chat.service';
 import * as ChatActions from './chat.actions';
 import { selectChatState } from './chat.selectors';
@@ -70,16 +71,15 @@ export class ChatEffects {
     this.actions$.pipe(
       ofType(ChatActions.sendMessage),
       mergeMap((action) =>
-        this.chatService.sendMessage(action.content, action.parentId).pipe(
-          map((messageId) => {
-            // Create a Message object from the response
-            const message: Message = {
-              id: messageId,
-              content: action.content,
-              role: 'user',
+        this.aiService.generateContent(action.content).pipe(
+          map((response) => {
+            const aiMessage: Message = {
+              id: Date.now().toString(),
+              content: response,
+              role: 'assistant',
               timestamp: new Date()
             };
-            return ChatActions.sendMessageSuccess({ message });
+            return ChatActions.sendMessageSuccess({ message: aiMessage });
           }),
           catchError((error) =>
             of(ChatActions.sendMessageFailure({ error: error.message }))
@@ -130,6 +130,7 @@ export class ChatEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private aiService: AiService
   ) {}
 }

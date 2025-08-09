@@ -76,11 +76,20 @@ export const chatReducer = createReducer(
   })),
 
   // Send message
-  on(ChatActions.sendMessage, state => ({
-    ...state,
-    loading: true,
-    error: null
-  })),
+  on(ChatActions.sendMessage, (state, { content }) => {
+    const userMessage = {
+      id: Date.now().toString(),
+      role: 'user' as const,
+      content,
+      timestamp: new Date()
+    };
+    return {
+      ...state,
+      messages: [...state.messages, userMessage],
+      loading: true,
+      error: null
+    };
+  }),
   on(ChatActions.sendMessageSuccess, (state, { message }) => ({
     ...state,
     messages: [...state.messages, message],
