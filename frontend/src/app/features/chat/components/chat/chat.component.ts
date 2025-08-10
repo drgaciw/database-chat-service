@@ -140,7 +140,8 @@ export class ChatComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(error => {
         if (error) {
-          this.snackBar.open(error, 'Dismiss', { duration: 5000 });
+          const errorMessage = error.message || 'An unknown error occurred.';
+          this.snackBar.open(errorMessage, 'Dismiss', { duration: 5000 });
           this.store.dispatch(ChatActions.clearError());
         }
       });

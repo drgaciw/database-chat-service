@@ -24,7 +24,7 @@ export interface Reference {
 export interface ChatState {
   messages: Message[];
   loading: boolean;
-  error: string | null;
+  error: any | null;
   references: Reference[];
   isStreaming: boolean;
   searchResults?: Message[];

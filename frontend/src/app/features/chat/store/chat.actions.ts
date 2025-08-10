@@ -10,7 +10,7 @@ export const loadConversationsSuccess = createAction(
 );
 export const loadConversationsFailure = createAction(
   '[Chat] Load Conversations Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Create conversation
@@ -24,7 +24,7 @@ export const createConversationSuccess = createAction(
 );
 export const createConversationFailure = createAction(
   '[Chat] Create Conversation Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Load messages
@@ -38,7 +38,7 @@ export const loadMessagesSuccess = createAction(
 );
 export const loadMessagesFailure = createAction(
   '[Chat] Load Messages Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Search messages
@@ -52,7 +52,7 @@ export const searchMessagesSuccess = createAction(
 );
 export const searchMessagesFailure = createAction(
   '[Chat] Search Messages Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Message history
@@ -66,7 +66,7 @@ export const loadMessageHistorySuccess = createAction(
 );
 export const loadMessageHistoryFailure = createAction(
   '[Chat] Load Message History Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Send message
@@ -80,7 +80,7 @@ export const sendMessageSuccess = createAction(
 );
 export const sendMessageFailure = createAction(
   '[Chat] Send Message Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Stream message
@@ -106,7 +106,7 @@ export const loadThreadMessagesSuccess = createAction(
 );
 export const loadThreadMessagesFailure = createAction(
   '[Chat] Load Thread Messages Failure',
-  props<{ error: string }>()
+  props<{ error: any }>()
 );
 
 // Typing indicators

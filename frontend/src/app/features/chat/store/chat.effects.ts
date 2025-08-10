@@ -25,7 +25,7 @@ export class ChatEffects {
             })
           ),
           catchError((error) =>
-            of(ChatActions.loadMessagesFailure({ error: error.message }))
+            of(ChatActions.loadMessagesFailure({ error }))
           )
         )
       )
@@ -42,7 +42,7 @@ export class ChatEffects {
             ChatActions.searchMessagesSuccess({ results })
           ),
           catchError((error) =>
-            of(ChatActions.searchMessagesFailure({ error: error.message }))
+            of(ChatActions.searchMessagesFailure({ error }))
           )
         )
       )
@@ -59,7 +59,7 @@ export class ChatEffects {
             ChatActions.loadMessageHistorySuccess({ history })
           ),
           catchError((error) =>
-            of(ChatActions.loadMessageHistoryFailure({ error: error.message }))
+            of(ChatActions.loadMessageHistoryFailure({ error }))
           )
         )
       )
@@ -85,7 +85,17 @@ export class ChatEffects {
           this.aiService.generateContentStream(action.content, history).pipe(
             map((chunk) => ChatActions.streamMessageChunk({ chunk })),
             catchError((error) =>
-              of(ChatActions.sendMessageFailure({ error: error.message }))
+              concat(
+                of(ChatActions.sendMessageFailure({ error })),
+                of(ChatActions.sendMessageSuccess({
+                  message: {
+                    id: Date.now().toString(),
+                    role: 'assistant',
+                    content: 'Sorry, I am having trouble connecting to the AI. Please try again later.',
+                    timestamp: new Date()
+                  }
+                }))
+              )
             )
           ),
           of(ChatActions.streamMessageEnd())
@@ -104,7 +114,7 @@ export class ChatEffects {
             ChatActions.loadThreadMessagesSuccess({ messages })
           ),
           catchError((error) =>
-            of(ChatActions.loadThreadMessagesFailure({ error: error.message }))
+            of(ChatActions.loadThreadMessagesFailure({ error }))
           )
         )
       )

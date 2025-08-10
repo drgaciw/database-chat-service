@@ -63,6 +63,12 @@ export class AiService {
         body: JSON.stringify(body),
         signal: controller.signal
       }).then(response => {
+        if (!response.ok) {
+          return response.json().then(errorBody => {
+            const errorMessage = errorBody.error?.message || 'Unknown API error';
+            throw new Error(errorMessage);
+          });
+        }
         if (!response.body) {
           throw new Error('No response body');
         }
