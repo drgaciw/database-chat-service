@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PromptTemplate } from 'src/app/core/services/prompt.service';
 
 @Component({
   selector: 'app-chat-input',
   templateUrl: './chat-input.component.html',
-  styleUrls: ['./chat-input.component.scss']
+  styleUrls: ['./chat-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatInputComponent {
   @Input() promptTemplates: PromptTemplate[] = [];
