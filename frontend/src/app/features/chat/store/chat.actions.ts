@@ -83,6 +83,13 @@ export const sendMessageFailure = createAction(
   props<{ error: string }>()
 );
 
+// Stream message
+export const streamMessageChunk = createAction(
+  '[Chat] Stream Message Chunk',
+  props<{ chunk: string }>()
+);
+export const streamMessageEnd = createAction('[Chat] Stream Message End');
+
 // Thread management
 export const openThread = createAction(
   '[Chat] Open Thread',

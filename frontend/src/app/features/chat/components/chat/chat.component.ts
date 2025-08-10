@@ -2,7 +2,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, takeUntil, take } from 'rxjs';
 import { ChatState, Message } from '../../models/message.model';
 import { ChatService } from '../../services/chat.service';
 import * as ChatActions from '../../store/chat.actions';
@@ -170,7 +170,12 @@ export class ChatComponent implements OnInit, OnDestroy {
     const messageContent = this.messageForm.get('message')?.value;
     this.messageForm.reset();
 
-    this.store.dispatch(ChatActions.sendMessage({ content: messageContent }));
+    this.store.select(ChatSelectors.selectSelectedThread).pipe(
+      take(1)
+    ).subscribe(selectedThread => {
+      const parentId = selectedThread ? selectedThread.id : undefined;
+      this.store.dispatch(ChatActions.sendMessage({ content: messageContent, parentId }));
+    });
   }
 
   onEnter(event: KeyboardEvent): void {

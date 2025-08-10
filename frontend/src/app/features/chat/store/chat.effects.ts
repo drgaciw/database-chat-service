@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
+import { of, concat } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import { AiService } from 'src/app/core/services/ai.service';
 import { ChatService } from '../services/chat.service';
@@ -70,22 +70,27 @@ export class ChatEffects {
   sendMessage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ChatActions.sendMessage),
-      mergeMap((action) =>
-        this.aiService.generateContent(action.content).pipe(
-          map((response) => {
-            const aiMessage: Message = {
-              id: Date.now().toString(),
-              content: response,
-              role: 'assistant',
-              timestamp: new Date()
-            };
-            return ChatActions.sendMessageSuccess({ message: aiMessage });
-          }),
-          catchError((error) =>
-            of(ChatActions.sendMessageFailure({ error: error.message }))
-          )
-        )
-      )
+      withLatestFrom(this.store.select(selectChatState)),
+      mergeMap(([action, state]) => {
+        const history = action.parentId ? state.threadMessages : [];
+        const initialAiMessage: Message = {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: '',
+          timestamp: new Date()
+        };
+
+        return concat(
+          of(ChatActions.sendMessageSuccess({ message: initialAiMessage })),
+          this.aiService.generateContentStream(action.content, history).pipe(
+            map((chunk) => ChatActions.streamMessageChunk({ chunk })),
+            catchError((error) =>
+              of(ChatActions.sendMessageFailure({ error: error.message }))
+            )
+          ),
+          of(ChatActions.streamMessageEnd())
+        );
+      })
     )
   );
 

@@ -1,22 +1,19 @@
-# Genkit Integration TODO List
+# Gemini API Integration TODO List
 
-This document outlines the tasks required for integrating Genkit into the Angular chat application. The tasks are organized by phase and can be worked on in parallel by different team members or agents.
+This document outlines the tasks required for integrating the Google Gemini API into the Angular chat application. The tasks are organized by phase and can be worked on in parallel by different team members or agents.
 
 ## Phase 1: Foundation Setup
 
 - [x] Create AI service (`src/app/services/ai.service.ts`)
-- [ ] Initialize Genkit with plugin architecture
-- [ ] Set up configuration management system
-- [ ] Define core flow interfaces
 - [x] Implement environment variable handling for API keys
 - [ ] Create model provider configuration system
 
 ## Phase 2: Flow Implementation
 
-- [ ] Implement chat processing flow (takes user input and role, returns AI response)
-- [ ] Implement streaming response flow (handles real-time response updates)
+- [x] Implement chat processing flow (takes user input and role, returns AI response)
+- [x] Implement streaming response flow (handles real-time response updates)
 - [ ] Implement error handling flow (manages API errors and fallback responses)
-- [ ] Add context management for role-based interactions
+- [x] Add context management for role-based interactions
 - [ ] Implement flow telemetry and monitoring hooks
 
 ## Phase 3: Component Integration
@@ -28,8 +25,8 @@ This document outlines the tasks required for integrating Genkit into the Angula
 
 ### AI Integration
 - [ ] Update AppComponent to coordinate with AI service
-- [/] Modify ChatInputComponent to trigger AI flows
-- [/] Enhance ChatService to handle AI responses
+- [x] Modify ChatInputComponent to trigger AI flows
+- [x] Enhance ChatService to handle AI responses
 - [ ] Update MessageBubbleComponent to display streaming content
 - [ ] Implement role-based model selection in components
 - [ ] Add loading states and UI feedback for AI processing
