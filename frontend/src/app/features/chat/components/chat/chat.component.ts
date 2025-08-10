@@ -50,9 +50,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loadMessages();
     this.setupRealtimeConnection();
-    this.setupTypingDetection();
     this.setupSearch();
     this.setupErrorHandling();
     this.promptTemplates = this.promptService.getTemplates();
@@ -64,10 +62,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (this.typingTimeout) {
       clearTimeout(this.typingTimeout);
     }
-  }
-
-  private loadMessages(page = 1): void {
-    this.store.dispatch(ChatActions.loadMessages({ page }));
   }
 
   private setupRealtimeConnection(): void {

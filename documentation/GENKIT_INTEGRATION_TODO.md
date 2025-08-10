@@ -24,7 +24,7 @@ This document outlines the tasks required for integrating the Google Gemini API 
 - [x] Fix inconsistent method naming in RoleToggleComponent (HTML calls `toggleRole`, TypeScript has `selectRole`)
 
 ### AI Integration
-- [ ] Update AppComponent to coordinate with AI service
+- [x] Update AppComponent to coordinate with AI service
 - [x] Modify ChatInputComponent to trigger AI flows
 - [x] Enhance ChatService to handle AI responses
 - [ ] Update MessageBubbleComponent to display streaming content
