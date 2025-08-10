@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Message } from 'src/app/features/chat/models/message.model';
 import { environment } from 'src/environments/environment';
 import { ModelConfig } from './model-config.service';
@@ -11,9 +11,16 @@ import { ModelConfig } from './model-config.service';
 })
 export class AiService {
 
+  private cache = new Map<string, string>();
+
   constructor(private http: HttpClient) { }
 
   generateContent(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
+    const cacheKey = JSON.stringify({ prompt, history, modelConfig });
+    if (this.cache.has(cacheKey)) {
+      return of(this.cache.get(cacheKey)!);
+    }
+
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:generateContent?key=${environment.googleApiKey}`;
     const contents = [
       ...history.map(message => ({
@@ -34,11 +41,17 @@ export class AiService {
     };
 
     return this.http.post<any>(apiUrl, body).pipe(
-      map(response => response.candidates[0].content.parts[0].text)
+      map(response => response.candidates[0].content.parts[0].text),
+      tap(response => this.cache.set(cacheKey, response))
     );
   }
 
   generateContentStream(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
+    const cacheKey = JSON.stringify({ prompt, history, modelConfig });
+    if (this.cache.has(cacheKey)) {
+      return of(this.cache.get(cacheKey)!);
+    }
+
     const contents = [
       ...history.map(message => ({
         role: message.role,
@@ -60,6 +73,7 @@ export class AiService {
     return new Observable<string>(observer => {
       const controller = new AbortController();
       const streamApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:streamGenerateContent?alt=sse&key=${environment.googleApiKey}`;
+      let fullResponse = '';
 
       fetch(streamApiUrl, {
         method: 'POST',
@@ -81,9 +95,10 @@ export class AiService {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
 
-        function push() {
+        const push = () => {
           reader.read().then(({ done, value }) => {
             if (done) {
+              this.cache.set(cacheKey, fullResponse);
               observer.complete();
               return;
             }
@@ -94,7 +109,9 @@ export class AiService {
                 try {
                   const json = JSON.parse(line.substring(6));
                   if (json.candidates && json.candidates[0].content.parts[0].text) {
-                    observer.next(json.candidates[0].content.parts[0].text);
+                    const textChunk = json.candidates[0].content.parts[0].text;
+                    fullResponse += textChunk;
+                    observer.next(textChunk);
                   }
                 } catch (e) {
                   // Ignore parsing errors, as some chunks might be incomplete
@@ -105,7 +122,7 @@ export class AiService {
           }).catch(err => {
             observer.error(err);
           });
-        }
+        };
         push();
       }).catch(err => {
         observer.error(err);
