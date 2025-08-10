@@ -8,7 +8,16 @@ import { Message } from '../../models/message.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessageBubbleComponent {
+  /**
+   * The message to display.
+   */
   @Input() message!: Message;
+  /**
+   * Whether the message is currently streaming.
+   */
   @Input() isStreaming = false;
+  /**
+   * Whether this is the last message in the list.
+   */
   @Input() isLast = false;
 }

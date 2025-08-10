@@ -10,6 +10,10 @@ export class StorageService {
 
   constructor() { }
 
+  /**
+   * Saves the chat history to localStorage.
+   * @param history The chat history to save.
+   */
   saveChatHistory(history: Message[]): void {
     try {
       localStorage.setItem(this.chatHistoryKey, JSON.stringify(history));
@@ -18,6 +22,10 @@ export class StorageService {
     }
   }
 
+  /**
+   * Loads the chat history from localStorage.
+   * @returns The chat history, or null if it doesn't exist.
+   */
   loadChatHistory(): Message[] | null {
     try {
       const historyJson = localStorage.getItem(this.chatHistoryKey);

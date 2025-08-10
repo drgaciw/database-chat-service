@@ -22,6 +22,11 @@ export class ModelConfigService {
 
   constructor() { }
 
+  /**
+   * Gets the model configuration for a given role.
+   * @param role The role to get the configuration for.
+   * @returns The model configuration.
+   */
   getModelConfig(role: 'Creative' | 'Precise'): ModelConfig {
     switch (role) {
       case 'Creative':

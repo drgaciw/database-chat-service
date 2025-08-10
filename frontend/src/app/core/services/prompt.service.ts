@@ -27,6 +27,10 @@ export class PromptService {
 
   constructor() { }
 
+  /**
+   * Gets the list of predefined prompt templates.
+   * @returns An array of prompt templates.
+   */
   getTemplates(): PromptTemplate[] {
     return this.templates;
   }

@@ -15,6 +15,13 @@ export class AiService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Generates content from the Gemini API.
+   * @param prompt The user's prompt.
+   * @param history The conversation history.
+   * @param modelConfig The model configuration to use.
+   * @returns An Observable with the AI's response.
+   */
   generateContent(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
     const cacheKey = JSON.stringify({ prompt, history, modelConfig });
     if (this.cache.has(cacheKey)) {
@@ -46,6 +53,13 @@ export class AiService {
     );
   }
 
+  /**
+   * Generates content from the Gemini API with streaming.
+   * @param prompt The user's prompt.
+   * @param history The conversation history.
+   * @param modelConfig The model configuration to use.
+   * @returns An Observable that emits chunks of the AI's response.
+   */
   generateContentStream(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
     const cacheKey = JSON.stringify({ prompt, history, modelConfig });
     if (this.cache.has(cacheKey)) {

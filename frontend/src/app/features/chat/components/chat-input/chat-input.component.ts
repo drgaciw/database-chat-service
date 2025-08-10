@@ -9,8 +9,17 @@ import { PromptTemplate } from 'src/app/core/services/prompt.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatInputComponent {
+  /**
+   * The list of prompt templates to display in the menu.
+   */
   @Input() promptTemplates: PromptTemplate[] = [];
+  /**
+   * Whether the component is in a loading state.
+   */
   @Input() loading = false;
+  /**
+   * Emits when the user sends a message.
+   */
   @Output() sendMessage = new EventEmitter<string>();
 
   messageForm: FormGroup;

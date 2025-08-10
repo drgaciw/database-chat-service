@@ -126,8 +126,8 @@ This document outlines the tasks required for integrating the Google Gemini API 
 
 ## Documentation
 
-- [ ] Document all flow definitions
-- [ ] Document configuration options
+- [x] Document all flow definitions
+- [x] Document configuration options
 - [ ] Create deployment guides
 - [ ] Document testing procedures
 - [ ] Create troubleshooting guide

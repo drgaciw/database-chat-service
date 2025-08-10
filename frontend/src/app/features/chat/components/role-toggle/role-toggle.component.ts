@@ -7,7 +7,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoleToggleComponent {
+  /**
+   * The currently selected role.
+   */
   @Input() selectedRole: 'Creative' | 'Precise' = 'Precise';
+  /**
+   * Emits when a new role is selected.
+   */
   @Output() roleSelected = new EventEmitter<'Creative' | 'Precise'>();
 
   onRoleChange(role: 'Creative' | 'Precise'): void {
