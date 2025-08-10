@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of, concat } from 'rxjs';
-import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
+import { catchError, map, mergeMap, withLatestFrom, tap } from 'rxjs/operators';
 import { AiService } from 'src/app/core/services/ai.service';
 import { ModelConfigService } from 'src/app/core/services/model-config.service';
+import { StorageService } from 'src/app/core/services/storage.service';
 import { ChatService } from '../services/chat.service';
 import * as ChatActions from './chat.actions';
 import { selectChatState } from './chat.selectors';
@@ -17,19 +18,39 @@ export class ChatEffects {
     this.actions$.pipe(
       ofType(ChatActions.loadMessages),
       withLatestFrom(this.store.select(selectChatState)),
-      mergeMap(([action, state]) =>
-        this.chatService.getMessages(action.parentId, action.page).pipe(
+      mergeMap(([action, state]) => {
+        if (action.parentId) {
+          return this.chatService.getReplies(action.parentId).pipe(
+            map((messages) =>
+              ChatActions.loadMessagesSuccess({
+                messages,
+                hasMore: messages.length === 50,
+              })
+            ),
+            catchError((error) => of(ChatActions.loadMessagesFailure({ error })))
+          );
+        }
+
+        const savedHistory = this.storageService.loadChatHistory();
+        if (savedHistory && savedHistory.length > 0) {
+          return of(
+            ChatActions.loadMessagesSuccess({
+              messages: savedHistory,
+              hasMore: false,
+            })
+          );
+        }
+
+        return this.chatService.getMessages(action.parentId, action.page).pipe(
           map((messages) =>
             ChatActions.loadMessagesSuccess({
               messages,
-              hasMore: messages.length === 50
+              hasMore: messages.length === 50,
             })
           ),
-          catchError((error) =>
-            of(ChatActions.loadMessagesFailure({ error }))
-          )
-        )
-      )
+          catchError((error) => of(ChatActions.loadMessagesFailure({ error })))
+        );
+      })
     )
   );
 
@@ -138,11 +159,27 @@ export class ChatEffects {
     )
   );
 
+  saveHistory$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        ChatActions.sendMessageSuccess,
+        ChatActions.streamMessageChunk,
+        ChatActions.streamMessageEnd
+      ),
+      withLatestFrom(this.store.select(selectChatState)),
+      tap(([action, state]) => {
+        this.storageService.saveChatHistory(state.messages);
+      })
+    ),
+    { dispatch: false }
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store,
     private chatService: ChatService,
     private aiService: AiService,
-    private modelConfigService: ModelConfigService
+    private modelConfigService: ModelConfigService,
+    private storageService: StorageService
   ) {}
 }
