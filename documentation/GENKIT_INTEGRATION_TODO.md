@@ -38,7 +38,7 @@ This document outlines the tasks required for integrating the Google Gemini API 
 - [ ] Add rate limiting and quota management
 - [ ] Optimize performance for chat interactions
 - [x] Implement conversation history management
-- [ ] Add custom prompt template support
+- [x] Add custom prompt template support
 
 ## Configuration Management
 

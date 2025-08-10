@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, distinctUntilChanged, takeUntil, take } from 'rxjs';
+import { PromptService, PromptTemplate } from 'src/app/core/services/prompt.service';
 import { ChatState, Message } from '../../models/message.model';
 import { ChatService } from '../../services/chat.service';
 import * as ChatActions from '../../store/chat.actions';
@@ -17,6 +18,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
   public selectedRole: 'Creative' | 'Precise' = 'Precise';
+  public promptTemplates: PromptTemplate[] = [];
   messageForm: FormGroup;
   searchForm: FormGroup;
   private destroy$ = new Subject<void>();
@@ -40,7 +42,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<{ chat: ChatState }>,
     private chatService: ChatService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private promptService: PromptService
   ) {
     this.messageForm = this.fb.group({
       message: ['', [Validators.required, Validators.minLength(1)]]
@@ -57,6 +60,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.setupTypingDetection();
     this.setupSearch();
     this.setupErrorHandling();
+    this.promptTemplates = this.promptService.getTemplates();
   }
 
   ngOnDestroy(): void {
@@ -164,6 +168,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   closeMessageHistory(): void {
     this.store.dispatch(ChatActions.clearSelectedMessage());
+  }
+
+  onTemplateSelected(template: PromptTemplate): void {
+    this.messageForm.get('message')?.setValue(template.text);
   }
 
   sendMessage(): void {
