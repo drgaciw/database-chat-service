@@ -1,0 +1,20 @@
+<div class="message" [ngClass]="{'user': message.role === 'user'}">
+  <div class="message-avatar">
+    <mat-icon>{{ message.role === 'user' ? 'person' : 'smart_toy' }}</mat-icon>
+  </div>
+  <div class="message-content">
+    <div class="message-text">
+      <span *ngIf="message.content" [class.streaming-cursor]="isLast && isStreaming">{{ message.content }}</span>
+      <div *ngIf="message.role === 'assistant' && !message.content && isStreaming" class="loading-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <div class="message-actions">
+      <button mat-icon-button (click)="showMessageHistory(message)">
+        <mat-icon>history</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -19,9 +19,9 @@ This document outlines the tasks required for integrating the Google Gemini API 
 ## Phase 3: Component Integration
 
 ### Component Fixes
-- [ ] Fix inconsistent property naming in ChatInputComponent (HTML uses `message`, TypeScript uses `newMessage`)
-- [ ] Fix inconsistent property access in MessageBubbleComponent (HTML uses `message.content`, model has `message.text`)
-- [ ] Fix inconsistent method naming in RoleToggleComponent (HTML calls `toggleRole`, TypeScript has `selectRole`)
+- [x] Fix inconsistent property naming in ChatInputComponent (HTML uses `message`, TypeScript uses `newMessage`)
+- [x] Fix inconsistent property access in MessageBubbleComponent (HTML uses `message.content`, model has `message.text`)
+- [x] Fix inconsistent method naming in RoleToggleComponent (HTML calls `toggleRole`, TypeScript has `selectRole`)
 
 ### AI Integration
 - [ ] Update AppComponent to coordinate with AI service

@@ -1,0 +1,21 @@
+.message-input-container {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+
+  form {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+
+    mat-form-field {
+      flex: 1;
+    }
+
+    button {
+      align-self: flex-end;
+    }
+  }
+}
