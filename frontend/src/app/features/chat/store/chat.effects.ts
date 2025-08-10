@@ -89,14 +89,8 @@ export class ChatEffects {
             catchError((error) =>
               concat(
                 of(ChatActions.sendMessageFailure({ error })),
-                of(ChatActions.sendMessageSuccess({
-                  message: {
-                    id: Date.now().toString(),
-                    role: 'assistant',
-                    content: 'Sorry, I am having trouble connecting to the AI. Please try again later.',
-                    timestamp: new Date()
-                  }
-                }))
+                of(ChatActions.streamMessageChunk({ chunk: 'Sorry, I am having trouble connecting to the AI. Please try again later.' })),
+                of(ChatActions.streamMessageEnd())
               )
             )
           ),
