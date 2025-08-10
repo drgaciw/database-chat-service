@@ -72,7 +72,7 @@ export const loadMessageHistoryFailure = createAction(
 // Send message
 export const sendMessage = createAction(
   '[Chat] Send Message',
-  props<{ content: string; parentId?: string }>()
+  props<{ content: string; parentId?: string; role: 'Creative' | 'Precise' }>()
 );
 export const sendMessageSuccess = createAction(
   '[Chat] Send Message Success',

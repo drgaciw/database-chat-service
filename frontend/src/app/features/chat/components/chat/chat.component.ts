@@ -16,6 +16,7 @@ import * as ChatSelectors from '../../store/chat.selectors';
 export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
+  public selectedRole: 'Creative' | 'Precise' = 'Precise';
   messageForm: FormGroup;
   searchForm: FormGroup;
   private destroy$ = new Subject<void>();
@@ -175,7 +176,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       take(1)
     ).subscribe(selectedThread => {
       const parentId = selectedThread ? selectedThread.id : undefined;
-      this.store.dispatch(ChatActions.sendMessage({ content: messageContent, parentId }));
+      this.store.dispatch(ChatActions.sendMessage({ content: messageContent, parentId, role: this.selectedRole }));
     });
   }
 

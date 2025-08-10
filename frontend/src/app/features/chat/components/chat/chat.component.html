@@ -1,6 +1,13 @@
 <div class="chat-container">
   <div class="chat-header">
     <h1>MongoDB Chat</h1>
+    <mat-form-field>
+      <mat-label>AI Role</mat-label>
+      <mat-select [(value)]="selectedRole">
+        <mat-option value="Creative">Creative</mat-option>
+        <mat-option value="Precise">Precise</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="search-container">
       <form [formGroup]="searchForm" class="search-form">
         <mat-form-field appearance="outline">

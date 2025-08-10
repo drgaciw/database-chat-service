@@ -4,18 +4,17 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Message } from 'src/app/features/chat/models/message.model';
 import { environment } from 'src/environments/environment';
+import { ModelConfig } from './model-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiService {
 
-  private readonly apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${environment.googleApiKey}`;
-  private readonly streamApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=${environment.googleApiKey}`;
-
   constructor(private http: HttpClient) { }
 
-  generateContent(prompt: string, history: Message[] = []): Observable<string> {
+  generateContent(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:generateContent?key=${environment.googleApiKey}`;
     const contents = [
       ...history.map(message => ({
         role: message.role,
@@ -28,15 +27,18 @@ export class AiService {
     ];
 
     const body = {
-      contents
+      contents,
+      generationConfig: {
+        temperature: modelConfig?.temperature || 0.2
+      }
     };
 
-    return this.http.post<any>(this.apiUrl, body).pipe(
+    return this.http.post<any>(apiUrl, body).pipe(
       map(response => response.candidates[0].content.parts[0].text)
     );
   }
 
-  generateContentStream(prompt: string, history: Message[] = []): Observable<string> {
+  generateContentStream(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
     const contents = [
       ...history.map(message => ({
         role: message.role,
@@ -49,13 +51,17 @@ export class AiService {
     ];
 
     const body = {
-      contents
+      contents,
+      generationConfig: {
+        temperature: modelConfig?.temperature || 0.2
+      }
     };
 
     return new Observable<string>(observer => {
       const controller = new AbortController();
+      const streamApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:streamGenerateContent?alt=sse&key=${environment.googleApiKey}`;
 
-      fetch(this.streamApiUrl, {
+      fetch(streamApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

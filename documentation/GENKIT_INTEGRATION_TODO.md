@@ -6,7 +6,7 @@ This document outlines the tasks required for integrating the Google Gemini API 
 
 - [x] Create AI service (`src/app/services/ai.service.ts`)
 - [x] Implement environment variable handling for API keys
-- [ ] Create model provider configuration system
+- [x] Create model provider configuration system
 
 ## Phase 2: Flow Implementation
 
@@ -28,7 +28,7 @@ This document outlines the tasks required for integrating the Google Gemini API 
 - [x] Modify ChatInputComponent to trigger AI flows
 - [x] Enhance ChatService to handle AI responses
 - [ ] Update MessageBubbleComponent to display streaming content
-- [ ] Implement role-based model selection in components
+- [x] Implement role-based model selection in components
 - [ ] Add loading states and UI feedback for AI processing
 
 ## Phase 4: Enhancement
@@ -47,7 +47,7 @@ This document outlines the tasks required for integrating the Google Gemini API 
   - [ ] `ANTHROPIC_API_KEY`
   - [ ] `OPENAI_API_KEY`
   - [ ] `OPENROUTER_API_KEY`
-- [ ] Implement model selection configuration
+- [x] Implement model selection configuration
 - [ ] Configure cost optimization settings
 - [ ] Define fallback model definitions
 - [ ] Set up rate limiting configuration

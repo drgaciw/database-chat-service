@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { of, concat } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import { AiService } from 'src/app/core/services/ai.service';
+import { ModelConfigService } from 'src/app/core/services/model-config.service';
 import { ChatService } from '../services/chat.service';
 import * as ChatActions from './chat.actions';
 import { selectChatState } from './chat.selectors';
@@ -73,6 +74,7 @@ export class ChatEffects {
       withLatestFrom(this.store.select(selectChatState)),
       mergeMap(([action, state]) => {
         const history = action.parentId ? state.threadMessages : [];
+        const modelConfig = this.modelConfigService.getModelConfig(action.role);
         const initialAiMessage: Message = {
           id: Date.now().toString(),
           role: 'assistant',
@@ -82,7 +84,7 @@ export class ChatEffects {
 
         return concat(
           of(ChatActions.sendMessageSuccess({ message: initialAiMessage })),
-          this.aiService.generateContentStream(action.content, history).pipe(
+          this.aiService.generateContentStream(action.content, history, modelConfig).pipe(
             map((chunk) => ChatActions.streamMessageChunk({ chunk })),
             catchError((error) =>
               concat(
@@ -146,6 +148,7 @@ export class ChatEffects {
     private actions$: Actions,
     private store: Store,
     private chatService: ChatService,
-    private aiService: AiService
+    private aiService: AiService,
+    private modelConfigService: ModelConfigService
   ) {}
 }
