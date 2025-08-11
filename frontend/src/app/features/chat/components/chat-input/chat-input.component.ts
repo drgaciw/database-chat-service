@@ -26,7 +26,7 @@ export class ChatInputComponent {
 
   constructor(private fb: FormBuilder) {
     this.messageForm = this.fb.group({
-      message: ['', [Validators.required, Validators.minLength(1)]]
+      message: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2000)]]
     });
   }
 
@@ -34,8 +34,15 @@ export class ChatInputComponent {
     if (this.messageForm.invalid) return;
 
     const messageContent = this.messageForm.get('message')?.value;
-    this.sendMessage.emit(messageContent);
+    const sanitizedContent = this.sanitize(messageContent);
+    this.sendMessage.emit(sanitizedContent);
     this.messageForm.reset();
+  }
+
+  private sanitize(text: string): string {
+    const tag = document.createElement('div');
+    tag.innerHTML = text;
+    return tag.textContent || '';
   }
 
   onEnter(event: KeyboardEvent): void {
