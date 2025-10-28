@@ -64,6 +64,14 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,6 +84,9 @@
             },
             "development": {
               "browserTarget": "database-chat-frontend:build:development"
+            },
+            "local": {
+              "browserTarget": "database-chat-frontend:build:local"
             }
           },
           "defaultConfiguration": "development"

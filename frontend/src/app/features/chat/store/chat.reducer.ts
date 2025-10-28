@@ -76,16 +76,35 @@ export const chatReducer = createReducer(
   })),
 
   // Send message
-  on(ChatActions.sendMessage, state => ({
-    ...state,
-    loading: true,
-    error: null
-  })),
-  on(ChatActions.sendMessageSuccess, (state, { message }) => ({
-    ...state,
-    messages: [...state.messages, message],
-    loading: false
-  })),
+  on(ChatActions.sendMessage, (state, { content }) => {
+    const userMessage = {
+      id: Date.now().toString(),
+      role: 'user' as const,
+      content,
+      timestamp: new Date()
+    };
+    return {
+      ...state,
+      messages: [...state.messages, userMessage],
+      loading: true,
+      error: null
+    };
+  }),
+  on(ChatActions.sendMessageSuccess, (state, { message }) => {
+    if (message.role === 'assistant' && message.content === '') {
+      return {
+        ...state,
+        messages: [...state.messages, message],
+        loading: false,
+        isStreaming: true
+      };
+    }
+    return {
+      ...state,
+      messages: [...state.messages, message],
+      loading: false
+    };
+  }),
   on(ChatActions.sendMessageFailure, (state, { error }) => ({
     ...state,
     loading: false,
@@ -133,6 +152,26 @@ export const chatReducer = createReducer(
     ...state,
     selectedMessage: null,
     messageHistory: []
+  })),
+
+  // Stream message
+  on(ChatActions.streamMessageChunk, (state, { chunk }) => {
+    const lastMessage = state.messages[state.messages.length - 1];
+    if (lastMessage && lastMessage.role === 'assistant') {
+      const updatedMessage = {
+        ...lastMessage,
+        content: lastMessage.content + chunk
+      };
+      return {
+        ...state,
+        messages: [...state.messages.slice(0, -1), updatedMessage]
+      };
+    }
+    return state;
+  }),
+  on(ChatActions.streamMessageEnd, state => ({
+    ...state,
+    isStreaming: false
   })),
 
   // Error handling

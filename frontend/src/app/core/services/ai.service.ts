@@ -1,0 +1,150 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Message } from 'src/app/features/chat/models/message.model';
+import { environment } from 'src/environments/environment';
+import { ModelConfig } from './model-config.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AiService {
+
+  private cache = new Map<string, string>();
+
+  constructor(private http: HttpClient) { }
+
+  /**
+   * Generates content from the Gemini API.
+   * @param prompt The user's prompt.
+   * @param history The conversation history.
+   * @param modelConfig The model configuration to use.
+   * @returns An Observable with the AI's response.
+   */
+  generateContent(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
+    const cacheKey = JSON.stringify({ prompt, history, modelConfig });
+    if (this.cache.has(cacheKey)) {
+      return of(this.cache.get(cacheKey)!);
+    }
+
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:generateContent?key=${environment.googleApiKey}`;
+    const contents = [
+      ...history.map(message => ({
+        role: message.role,
+        parts: [{ text: message.content }]
+      })),
+      {
+        role: 'user',
+        parts: [{ text: prompt }]
+      }
+    ];
+
+    const body = {
+      contents,
+      generationConfig: {
+        temperature: modelConfig?.temperature || 0.2
+      }
+    };
+
+    return this.http.post<any>(apiUrl, body).pipe(
+      map(response => response.candidates[0].content.parts[0].text),
+      tap(response => this.cache.set(cacheKey, response))
+    );
+  }
+
+  /**
+   * Generates content from the Gemini API with streaming.
+   * @param prompt The user's prompt.
+   * @param history The conversation history.
+   * @param modelConfig The model configuration to use.
+   * @returns An Observable that emits chunks of the AI's response.
+   */
+  generateContentStream(prompt: string, history: Message[] = [], modelConfig?: ModelConfig): Observable<string> {
+    const cacheKey = JSON.stringify({ prompt, history, modelConfig });
+    if (this.cache.has(cacheKey)) {
+      return of(this.cache.get(cacheKey)!);
+    }
+
+    const contents = [
+      ...history.map(message => ({
+        role: message.role,
+        parts: [{ text: message.content }]
+      })),
+      {
+        role: 'user',
+        parts: [{ text: prompt }]
+      }
+    ];
+
+    const body = {
+      contents,
+      generationConfig: {
+        temperature: modelConfig?.temperature || 0.2
+      }
+    };
+
+    return new Observable<string>(observer => {
+      const controller = new AbortController();
+      const streamApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelConfig?.name || 'gemini-2.5-flash'}:streamGenerateContent?alt=sse&key=${environment.googleApiKey}`;
+      let fullResponse = '';
+
+      fetch(streamApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+        signal: controller.signal
+      }).then(response => {
+        if (!response.ok) {
+          return response.json().then(errorBody => {
+            const errorMessage = errorBody.error?.message || 'Unknown API error';
+            throw new Error(errorMessage);
+          });
+        }
+        if (!response.body) {
+          throw new Error('No response body');
+        }
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+
+        const push = () => {
+          reader.read().then(({ done, value }) => {
+            if (done) {
+              this.cache.set(cacheKey, fullResponse);
+              observer.complete();
+              return;
+            }
+            const chunk = decoder.decode(value);
+            const lines = chunk.split('\n');
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                try {
+                  const json = JSON.parse(line.substring(6));
+                  if (json.candidates && json.candidates[0].content.parts[0].text) {
+                    const textChunk = json.candidates[0].content.parts[0].text;
+                    fullResponse += textChunk;
+                    observer.next(textChunk);
+                  }
+                } catch (e) {
+                  // Ignore parsing errors, as some chunks might be incomplete
+                }
+              }
+            }
+            push();
+          }).catch(err => {
+            observer.error(err);
+          });
+        };
+        push();
+      }).catch(err => {
+        observer.error(err);
+      });
+
+      return () => {
+        controller.abort();
+      };
+    });
+  }
+}

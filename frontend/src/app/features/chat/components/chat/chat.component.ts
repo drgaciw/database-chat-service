@@ -2,7 +2,8 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, takeUntil, take } from 'rxjs';
+import { PromptService, PromptTemplate } from 'src/app/core/services/prompt.service';
 import { ChatState, Message } from '../../models/message.model';
 import { ChatService } from '../../services/chat.service';
 import * as ChatActions from '../../store/chat.actions';
@@ -16,7 +17,8 @@ import * as ChatSelectors from '../../store/chat.selectors';
 export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
-  messageForm: FormGroup;
+  public selectedRole: 'Creative' | 'Precise' = 'Precise';
+  public promptTemplates: PromptTemplate[] = [];
   searchForm: FormGroup;
   private destroy$ = new Subject<void>();
   private typingTimeout: any;
@@ -39,23 +41,19 @@ export class ChatComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<{ chat: ChatState }>,
     private chatService: ChatService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private promptService: PromptService
   ) {
-    this.messageForm = this.fb.group({
-      message: ['', [Validators.required, Validators.minLength(1)]]
-    });
-
     this.searchForm = this.fb.group({
       query: ['', [Validators.required, Validators.minLength(1)]]
     });
   }
 
   ngOnInit(): void {
-    this.loadMessages();
     this.setupRealtimeConnection();
-    this.setupTypingDetection();
     this.setupSearch();
     this.setupErrorHandling();
+    this.promptTemplates = this.promptService.getTemplates();
   }
 
   ngOnDestroy(): void {
@@ -64,10 +62,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (this.typingTimeout) {
       clearTimeout(this.typingTimeout);
     }
-  }
-
-  private loadMessages(page = 1): void {
-    this.store.dispatch(ChatActions.loadMessages({ page }));
   }
 
   private setupRealtimeConnection(): void {
@@ -99,27 +93,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       });
   }
 
-  private setupTypingDetection(): void {
-    this.messageForm.get('message')?.valueChanges
-      .pipe(
-        takeUntil(this.destroy$),
-        debounceTime(300),
-        distinctUntilChanged()
-      )
-      .subscribe(value => {
-        if (value?.length > 0) {
-          this.store.dispatch(ChatActions.startTyping());
-          if (this.typingTimeout) {
-            clearTimeout(this.typingTimeout);
-          }
-          this.typingTimeout = setTimeout(() => {
-            this.store.dispatch(ChatActions.stopTyping());
-          }, 2000);
-        } else {
-          this.store.dispatch(ChatActions.stopTyping());
-        }
-      });
-  }
 
   private setupSearch(): void {
     this.searchForm.get('query')?.valueChanges
@@ -140,7 +113,8 @@ export class ChatComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(error => {
         if (error) {
-          this.snackBar.open(error, 'Dismiss', { duration: 5000 });
+          const errorMessage = error.message || 'An unknown error occurred.';
+          this.snackBar.open(errorMessage, 'Dismiss', { duration: 5000 });
           this.store.dispatch(ChatActions.clearError());
         }
       });
@@ -164,20 +138,13 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.store.dispatch(ChatActions.clearSelectedMessage());
   }
 
-  sendMessage(): void {
-    if (this.messageForm.invalid) return;
-
-    const message = this.messageForm.get('message')?.value;
-    this.messageForm.reset();
-
-    this.store.dispatch(ChatActions.sendMessage({ content: message }));
-  }
-
-  onEnter(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
-      this.sendMessage();
-    }
+  onSendMessage(messageContent: string): void {
+    this.store.select(ChatSelectors.selectSelectedThread).pipe(
+      take(1)
+    ).subscribe(selectedThread => {
+      const parentId = selectedThread ? selectedThread.id : undefined;
+      this.store.dispatch(ChatActions.sendMessage({ content: messageContent, parentId, role: this.selectedRole }));
+    });
   }
 
   openThread(message: Message): void {

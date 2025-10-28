@@ -1,0 +1,21 @@
+<div class="message-input-container">
+  <button mat-icon-button [matMenuTriggerFor]="promptMenu">
+    <mat-icon>add_comment</mat-icon>
+  </button>
+  <mat-menu #promptMenu="matMenu">
+    <button *ngFor="let template of promptTemplates" mat-menu-item (click)="onTemplateSelected(template)">
+      {{ template.name }}
+    </button>
+  </mat-menu>
+  <form [formGroup]="messageForm" (ngSubmit)="onSendMessage()">
+    <mat-form-field appearance="outline">
+      <mat-label>Type your message</mat-label>
+      <textarea matInput formControlName="message" placeholder="Type your message..."
+                (keydown)="onEnter($event)"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="messageForm.invalid || loading">
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+</div>

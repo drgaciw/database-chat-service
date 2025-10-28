@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as ChatActions from './features/chat/store/chat.actions';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,12 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MongoDB Chat Service';
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(ChatActions.loadMessages({}));
+  }
 }

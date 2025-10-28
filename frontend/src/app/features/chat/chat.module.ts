@@ -9,13 +9,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import { MessageBubbleComponent } from './components/message-bubble/message-bubble.component';
+import { RoleToggleComponent } from './components/role-toggle/role-toggle.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ChatService } from './services/chat.service';
 import { ChatEffects } from './store/chat.effects';
 import { chatReducer } from './store/chat.reducer';
 
 @NgModule({
-  declarations: [ChatComponent],
+  declarations: [ChatComponent, ChatInputComponent, MessageBubbleComponent, RoleToggleComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
